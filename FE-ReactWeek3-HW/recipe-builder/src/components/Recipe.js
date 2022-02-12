@@ -41,7 +41,8 @@ export const Recipe = (props) => {
     return (
       <div className="card-recipe ">
         <h1>{recipe.name}</h1>                          
-
+        <h4 className="tab"><strong>Category:</strong>  {recipe.category} <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><strong> Number of People Served:</strong> {recipe.numberServed}</h4>  
+        <br />
         <h4><strong>Ingredients: </strong></h4>
             {
                 ingredients ({ ingredients, recipeId: recipe._id, deleteIngredient})
