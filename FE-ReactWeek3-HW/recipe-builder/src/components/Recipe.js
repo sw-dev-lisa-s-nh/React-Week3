@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Card } from 'react-bootstrap';
 import { NewIngredientForm } from './NewIngredientForm';
 
 // stateless or functional component
