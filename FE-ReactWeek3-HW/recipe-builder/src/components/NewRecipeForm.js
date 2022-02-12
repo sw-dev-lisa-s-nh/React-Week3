@@ -26,6 +26,7 @@ export const NewRecipeForm = (props) => {
             setName('');
             setCategory('');
             setNumberServed('');
+            setIngredients('');
         } else {
             console.log('Invalid Recipe Input');
         }

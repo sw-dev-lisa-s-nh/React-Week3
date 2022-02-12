@@ -25,8 +25,10 @@ export const Recipe = (props) => {
         ? <ul>
             {recipe.ingredients.map((ingredient,index) => (
             <li key={index}>
-                    <label> {`${ingredient.name} Quantity: ${ingredient.quantity} Units: ${ingredient.units}\n Instructions: ${ingredients.instructions}`} </label>
-                    <button onClick={(e) => deleteIngredient(ingredient.name)}>Delete Ingredient</button>
+                    <label> <strong>{ingredient.name}:</strong>  {ingredient.quantity} {ingredient.units} <span>&nbsp;&nbsp;</span>
+                    <strong> &mdash; </strong> <span>&nbsp;&nbsp;</span> {ingredient.instructions}  </label>
+                    <span>&nbsp; &nbsp; &nbsp;</span>
+                    <button className="btn-dark rounded" onClick={(e) => deleteIngredient(ingredient.name)}>Delete Ingredient</button>
                 </li>
             ))}
           </ul>   

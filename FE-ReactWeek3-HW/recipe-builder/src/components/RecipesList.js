@@ -2,7 +2,6 @@ import  React from 'react';
 import { Recipe } from './Recipe';
 import { recipeApi } from '../rest/RecipeApi.js';
 import { NewRecipeForm } from './NewRecipeForm';
-import { NewIngredientForm } from './NewIngredientForm.js';
 
 
 export class RecipesList extends React.Component {   
@@ -59,7 +58,7 @@ export class RecipesList extends React.Component {
                     recipe= {recipe}
                     updateRecipe={this.updateRecipe}
                 />
-                <button className="btn-dark" onClick={e =>
+                <button className="btn-dark rounded" onClick={e =>
                     this.deleteRecipe(recipe._id)}>Delete Recipe</button>
                     <br /><br />
                </div>
@@ -70,7 +69,7 @@ export class RecipesList extends React.Component {
 
         return (
             <div className="recipe-div rounded container p-4 border recipe-list">
-                <h1>Recipes:</h1>
+                <h1>Recipe Builder</h1>
                 <div>
                     <ul>
                         {recipes}
