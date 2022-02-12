@@ -9,6 +9,7 @@ export const NewRecipeForm = (props) => {
     const [name, setName] = useState('');
     const [numberServed, setNumberServed] = useState('');
     const [category, setCategory] = useState('');
+    const [ingredients, setIngredients] = useState([]);
 
 
     const handleNumberServedInput = (e) => {
@@ -21,7 +22,7 @@ export const NewRecipeForm = (props) => {
         // the default submit action WILL not occur!
         e.preventDefault();
         if (name && category) {
-            createRecipe({name, numberServed, category});
+            createRecipe({name, numberServed, category, ingredients});
             setName('');
             setCategory('');
             setNumberServed('');
@@ -44,8 +45,8 @@ export const NewRecipeForm = (props) => {
     //              and the state value updates the value in this input.
     //              So they stay tied together both ways!!!
     return  (
-        <div className="new-recipe p-4 container border primary">
-            <h4>Enter a Recipe</h4>
+        <div className="new-recipe p-4 container border dark">
+            <h4>Enter a New Recipe</h4>
             <Form onSubmit={onSubmit}>
                 <input
                     type='text'
@@ -70,7 +71,7 @@ export const NewRecipeForm = (props) => {
                 />
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <Button 
-                    className='btn-primary' 
+                    className='btn-dark' 
                     type='submit' 
                     onClick={onSubmit}>Add Recipe</Button>
                 <br />

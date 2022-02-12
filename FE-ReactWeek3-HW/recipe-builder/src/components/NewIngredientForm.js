@@ -19,7 +19,8 @@ export const NewIngredientForm = (props) => {
     const onSubmit = (e) => {
         // the default submit action WILL not occur!
         e.preventDefault();
-        if (name && quantity && units && instructions) {
+        if (name && quantity && units) {
+            console.log("In OnSubmit Ingredients");
             props.addNewIngredient({name, quantity, units, instructions});
             setName('');
             setQuantity('');
@@ -44,7 +45,7 @@ export const NewIngredientForm = (props) => {
     //              and the state value updates the value in this input.
     //              So they stay tied together both ways!!!
     return  (
-        <div className="new-ingredient border primary container p-4">
+        <div className="new-ingredient border container p-4">
             <h4>Add a New Ingredient</h4>
             <Form onSubmit={onSubmit}>
                 <input
@@ -72,7 +73,7 @@ export const NewIngredientForm = (props) => {
                     onChange={(e) => setInstructions(e.target.value)}
                     value={instructions}
                 /> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <Button className='btn-primary' type='submit'>Add Ingredient</Button>
+                <Button className='btn-dark' type='submit'>Add Ingredient</Button>
             </Form>
         </div>
     ) // end of return

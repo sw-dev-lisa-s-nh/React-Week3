@@ -27,8 +27,19 @@ button {
   font-family: fantasy;
 }
 
+.recipe-div {
+  background: steelblue;
+  border-width: 4;
+  border-radius: 20px;
+}
+
 div {
   border-width: 4;
   border-radius: 20px;
-  background-color: lightsteelblue;
+}
+
+.single-recipe {
+  border-width: 4;
+  border-radius: 20px;
+  background:  lightsteelblue;
 }

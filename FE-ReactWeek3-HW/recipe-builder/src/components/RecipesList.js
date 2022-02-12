@@ -14,9 +14,10 @@ export class RecipesList extends React.Component {
         this.fetchRecipes();
     }
 
-    fetchRecipes ()  {
-        const recipes =  recipeApi.get();
-        this.setState({ recipes });
+    fetchRecipes =  async () => {
+        const returnedRecipes =  await recipeApi.get();
+        console.log('In fetchRecipes: ' + returnedRecipes);
+        this.setState({ recipes: returnedRecipes });
     };
 
     createRecipe = async (newRecipe) => {
@@ -25,9 +26,15 @@ export class RecipesList extends React.Component {
     };
 
     updateRecipe = async (updatedRecipe)  =>{
+        console.log('In updateRecipe: ' + updatedRecipe);
         await recipeApi.put(updatedRecipe);
         this.fetchRecipes();
     };
+
+    deleteRecipe = async (recipeId) => {
+        await recipeApi.delete(recipeId);
+        this.fetchRecipes();
+    }
 
     // createRecipe = async (newRecipe) => {
     //     const addRecipe =  recipeApi.post(newRecipe);
@@ -42,34 +49,34 @@ export class RecipesList extends React.Component {
 
    
     render() {
-        const recipes = this.props.recipes 
-        ? this.props.data.recipes.map((recipe, index) =>
-            <div>
+        console.log('In render: ' + this.state.recipes);
+        const recipes = this.state.recipes
+        ? this.state.recipes.map((recipe) =>
+           <div>
+              <div className="single-recipe rounded border p-4">
                 <Recipe 
-                    key={index}
-                    createRecipe={this.createRecipe}
-                    name={recipe.name} 
-                    numberServed={recipe.numberServed}
-                    category={recipe.category} 
-                    ingredients={recipe.ingredients}
+                    key={recipe._id}
+                    recipe= {recipe}
+                    updateRecipe={this.updateRecipe}
                 />
-                <button onClick={e =>
-                    this.props.deleteRecipe(e, this.props.data, recipe)}>Delete</button>
+                <button className="btn-dark" onClick={e =>
+                    this.deleteRecipe(recipe._id)}>Delete Recipe</button>
+                    <br /><br />
+               </div>
+               <br /> <br /> <br /> 
             </div>)
         : null;
+        console.log('Recipes in RecipeList: ' + recipes);
 
         return (
-            <div className="container p-4  recipe-list">
-                <h4>Recipes:</h4>
+            <div className="recipe-div rounded container p-4 border recipe-list">
+                <h1>Recipes:</h1>
                 <div>
                     <ul>
                         {recipes}
-                    </ul>
-                    <br /> <br />                
-                    <NewIngredientForm
-                        addNewIngredient={this.props.addNewIngredient} data={this.props.data} />
+                    </ul>               
                 </div>   
-                <br /> <br />                
+
                 <div>
                     <NewRecipeForm createRecipe={this.createRecipe}/>
                 </div>

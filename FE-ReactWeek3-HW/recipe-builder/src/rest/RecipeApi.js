@@ -34,17 +34,31 @@ class RecipeApi {
 
     put = async (recipe) => {
         try {
+            console.log(RECIPE_ENDPOINT);
             const resp = await fetch(`${RECIPE_ENDPOINT}/${recipe._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type' : 'application/json'
                 },
-                body: JSON.stringify(recipe)
+                body: JSON.stringify({"name" : recipe.name, "numberServed" : recipe.numberServed, "category": recipe.category, "ingredients" : recipe.ingredients}),
             });
+            console.log(resp);
             return await resp.json();
         } catch(e) {
             console.log('Oops, looks like updating recipes had an issue.', e);
         }  
+    }
+
+    delete = async (recipeId) => {
+        try {
+            console.log(RECIPE_ENDPOINT);
+            const resp = await fetch(`${RECIPE_ENDPOINT}/${recipeId}`, {
+                method: 'DELETE'
+            });
+            console.log(resp);
+        } catch(e) {
+            console.log('Oops, looks like delete recipe had an issue.',e);
+        }
     }
 }
 
