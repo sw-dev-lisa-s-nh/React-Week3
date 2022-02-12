@@ -15,7 +15,7 @@ export class RecipesList extends React.Component {
 
     fetchRecipes =  async () => {
         const returnedRecipes =  await recipeApi.get();
-        console.log('In fetchRecipes: ' + returnedRecipes);
+        // console.log('In fetchRecipes: ' + returnedRecipes);
         this.setState({ recipes: returnedRecipes });
     };
 
@@ -25,7 +25,7 @@ export class RecipesList extends React.Component {
     };
 
     updateRecipe = async (updatedRecipe)  =>{
-        console.log('In updateRecipe: ' + updatedRecipe);
+        //console.log('In updateRecipe: ' + updatedRecipe);
         await recipeApi.put(updatedRecipe);
         this.fetchRecipes();
     };
@@ -34,41 +34,29 @@ export class RecipesList extends React.Component {
         await recipeApi.delete(recipeId);
         this.fetchRecipes();
     }
-
-    // createRecipe = async (newRecipe) => {
-    //     const addRecipe =  recipeApi.post(newRecipe);
-    //     this.setState ({ ...addRecipe });
-    //     this.fetchRecipes();
-    // };
-
-    // updateRecipe = async (updatedRecipe) => {
-    //     await recipeApi.put(updatedRecipe);
-    //     this.fetchRecipes();
-    // };
-
    
     render() {
         console.log('In render: ' + this.state.recipes);
         const recipes = this.state.recipes
         ? this.state.recipes.map((recipe) =>
-           <div>
-              <div className="single-recipe rounded border p-4">
+           <div className="round-corner container-fluid">
+              <div className="single-recipe border p-2">
                 <Recipe 
                     key={recipe._id}
                     recipe= {recipe}
                     updateRecipe={this.updateRecipe}
-                />
-                <button className="btn-dark rounded" onClick={e =>
+                /><br />
+                <button className="btn-my-color rounded" onClick={e =>
                     this.deleteRecipe(recipe._id)}>Delete Recipe</button>
                     <br /><br />
                </div>
-               <br /> <br /> <br /> 
+               <br /> <br /> 
             </div>)
         : null;
         console.log('Recipes in RecipeList: ' + recipes);
 
         return (
-            <div className="recipe-div rounded container p-4 border recipe-list">
+            <div className="recipe-div p-2 border recipe-list">
                 <h1>Recipe Builder</h1>
                 <div>
                     <ul>
@@ -83,49 +71,3 @@ export class RecipesList extends React.Component {
         );
     };
 };
-
-// const recipes = this.props.recipes 
-// ? this.props.data.recipes.map((recipe, index) =>
-//     <li key={index}>
-//         {recipe.name} Quantity: {recipe.quantity}
-//         <button onClick={e =>
-//             this.props.deleteRecipe(e, this.props.data, recipe)
-//         }>Delete</button>
-//     </li>)
-// : null;
-
-
-//  { <h4>Recipes:</h4>
-//                     <div>
-//                         {this.state.recipes.map((recipe) => (
-//                             <Recipe
-//                                 recipe={recipe}
-//                                 name={recipe.name}
-//                                 numberServed={recipe.numberServed}
-//                                 category={recipe.category}
-//                                 key={recipe._id}
-//                                 createRecipe={this.createRecipe}
-//                             />
-//                         ))}
-//                     </div>       
-//                 </div>
-//             ); 
-        // } else {
-        //     this.totalRecipes++;
-        //     return (
-        //         <div className="container m-3 p-3 border primary recipe-list">
-        //         <h4>Recipes:</h4>
-        //             <div>
-        //             <Recipe {...
-        //             {
-        //                 id: 1,
-        //                 key: 1,
-        //                 name: 'Chocolate Berry Dessert',
-        //                 numberServed:  '8',
-        //                 category: 'Dessert'
-        //             } } />
-        //              <br /><br />
-        //              </div>
-        //         </div>
-        //     );
-        // }

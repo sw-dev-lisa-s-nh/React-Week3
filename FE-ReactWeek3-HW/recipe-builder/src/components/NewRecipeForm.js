@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 
 // importing { useState } allows us to use Hooks!
@@ -28,7 +28,8 @@ export const NewRecipeForm = (props) => {
             setNumberServed('');
             setIngredients('');
         } else {
-            console.log('Invalid Recipe Input');
+            alert('Invalid input:  Please re-enter ingredient!');
+            console.log('Invalid Recipe Input-- needs to be re-entered!');
         }
     }; // end of onSubmit
 
@@ -46,37 +47,38 @@ export const NewRecipeForm = (props) => {
     //              and the state value updates the value in this input.
     //              So they stay tied together both ways!!!
     return  (
-        <div className="new-recipe p-4 container border dark">
-            <h4>Enter a New Recipe</h4>
-            <Form onSubmit={onSubmit}>
-                <input
-                    type='text'
-                    placeholder='Recipe Name'
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                />
-                <span>&nbsp;&nbsp;</span>
-                <input
-                    type='text'
-                    placeholder='Number of Servings'
-                    onChange={handleNumberServedInput}
-                    value={numberServed}
-                />
-                <br /><br />
-                  <textarea
-                    type='text'
-                    cols='42'
-                    placeholder='Category:  Main, App, Dessert...'
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={category}
-                />
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <Button 
-                    className='btn-dark' 
-                    type='submit' 
-                    onClick={onSubmit}>Add Recipe</Button>
-                <br />
-            </Form>
+        <div className="new-recipe">
+            <div className="p-2 border">
+                <h4><strong>Enter a New Recipe</strong></h4>
+                <Form onSubmit={onSubmit}>
+                    <input
+                        type='text'
+                        placeholder='Recipe Name'
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                    />
+                    <span>&nbsp;&nbsp;</span>
+                    <input
+                        type='text'
+                        placeholder='Number of Servings'
+                        onChange={handleNumberServedInput}
+                        value={numberServed}
+                    />
+                    <span>&nbsp;&nbsp;</span>
+                    <input
+                        type='text'
+                        placeholder='Main, App, Dessert...'
+                        onChange={(e) => setCategory(e.target.value)}
+                        value={category}
+                    />
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button 
+                        className='btn-my-color rounded' 
+                        type='submit' 
+                        onClick={onSubmit}>Add Recipe</button>
+                    <br />
+                </Form>
+            </div>
         </div>
-    ) // end of return
+        ) // end of return
 }; // end of NewIngredientForm function

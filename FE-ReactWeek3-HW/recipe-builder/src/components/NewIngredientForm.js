@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-
+import { Form } from 'react-bootstrap';
 
 // importing { useState } allows us to use Hooks!
 
@@ -12,7 +11,6 @@ export const NewIngredientForm = (props) => {
 
     const handleQuantityInput = (e) => {
         const int = parseInt(e.target.value, 10);
-        // no negative numbers... if negative, pass in an empty string
         setQuantity(int >= 0 ? int : '');   
     }   // end of handleQuantityInput
 
@@ -20,7 +18,7 @@ export const NewIngredientForm = (props) => {
         // the default submit action WILL not occur!
         e.preventDefault();
         if (name && quantity && units) {
-            console.log("In OnSubmit Ingredients");
+            // console.log("In OnSubmit Ingredients");
             props.addNewIngredient({name, quantity, units, instructions});
             setName('');
             setQuantity('');
@@ -34,19 +32,13 @@ export const NewIngredientForm = (props) => {
 
     // create the JSX for this element -- create the return statement
 
-    // name:  everytime the text changes... this name value in the state is also being updated
-    // quantity:  everytime the text changes... call handleQuantityInput 
-    // units:  everytime the text changes... this units value in the state is also being updated
-    // instructions:  everytime the text changes... this instructions value in the state is also being updated
-
     // the last part of tying the state variable back to the actual value of these inputs 
-    //              is "value={name}", "value={quantity}", "value={units}" & "value={instructions}"   
-    //              the onChange always updates the state value, 
-    //              and the state value updates the value in this input.
-    //              So they stay tied together both ways!!!
+    //     is "value={name}", "value={quantity}", "value={units}" & "value={instructions}"   
+    //     The onChange always updates the state value, 
+    //         & the state value updates the value in this input, so stay tied together both ways!!!
     return  (
-        <div className="new-ingredient border container p-4">
-            <h4>Add a New Ingredient</h4>
+        <div className="new-ingredient border p-2">
+            <h4><strong>Add a New Ingredient</strong></h4>
             <Form onSubmit={onSubmit}>
                 <input
                     type='text'
@@ -66,14 +58,13 @@ export const NewIngredientForm = (props) => {
                     onChange={(e) => setUnits(e.target.value)}
                     value={units}
                 /> <br /><br />
-                <textarea
+                <input
                     type='text'
-                    cols='66'
-                    placeholder='Instructions for this ingredient...'
+                    placeholder='Any instructions?'
                     onChange={(e) => setInstructions(e.target.value)}
                     value={instructions}
                 /> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <Button className='btn-dark' type='submit'>Add Ingredient</Button>
+                <button className='btn-my-color rounded' type='submit'>Add Ingredient</button>
             </Form>
         </div>
     ) // end of return

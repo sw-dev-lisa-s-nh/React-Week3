@@ -13,8 +13,8 @@ code {
     monospace;
 }
 
-background {
-  color: grey;
+ul {
+  padding-left: 0px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -28,7 +28,7 @@ button {
 }
 
 .recipe-div {
-  background: steelblue;
+  background: lightsalmon;
   border-width: 4;
   border-radius: 20px;
 }
@@ -38,12 +38,39 @@ div {
   border-radius: 20px;
 }
 
+.new-ingredient {
+  background: lightsalmon;
+}
+
+.img-recipe {
+  background-color: lightsteelblue;
+  background-image: url("https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500.png");
+}
+
+.new-recipe {
+  background-color: lightsteelblue;
+}
+
 .single-recipe {
   border-width: 4;
   border-radius: 20px;
   background:  lightsteelblue;
 }
 
+label {
+  color: darkslateblue;
+}
+
+.btn-my-color {
+  color: white;
+  background-color: darkslateblue;
+}
+
 .tab {
   margin-left: 2.5em
+ }
+
+ .round-corner {
+  border-width: 4;
+  border-radius: 20px; 
  }

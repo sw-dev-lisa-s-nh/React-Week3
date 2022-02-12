@@ -28,20 +28,19 @@ export const Recipe = (props) => {
                     <label> <strong>{ingredient.name}:</strong>  {ingredient.quantity} {ingredient.units} <span>&nbsp;&nbsp;</span>
                     <strong> &mdash; </strong> <span>&nbsp;&nbsp;</span> {ingredient.instructions}  </label>
                     <span>&nbsp; &nbsp; &nbsp;</span>
-                    <button className="btn-dark rounded" onClick={(e) => deleteIngredient(ingredient.name)}>Delete Ingredient</button>
+                    <button className="btn-my-color rounded" onClick={(e) => deleteIngredient(ingredient.name)}>Delete Ingredient</button>
+                    <br /> <br />
                 </li>
             ))}
           </ul>   
         : null      
     )
 
-    // WHY DOES THIS WORK?????
-    //      ingredients is a function
-    //      It is taking props:  ingredients, recipeId, deleteIngredient function
-    //      
+    // This works becuase:  ingredients() is a function
+    //      It is taking props:  ingredients, recipeId, deleteIngredient function   
 
     return (
-      <div className="card-recipe p-2">
+      <div className="card-recipe ">
         <h1>{recipe.name}</h1>                          
 
         <h4><strong>Ingredients: </strong></h4>
@@ -49,54 +48,6 @@ export const Recipe = (props) => {
                 ingredients ({ ingredients, recipeId: recipe._id, deleteIngredient})
             }
             <NewIngredientForm addNewIngredient={addNewIngredient} />  
-             <br /> <br />
       </div>
     );
 };
-
-
-// <Card className="card-recipe p-2 border border-primary">
-// <Card.Header>
-//     <span>&nbsp; &nbsp; </span>
-//     <strong>{recipe.id}.</strong> <span>&nbsp;</span><strong>{recipe.name}</strong>                          
-// </Card.Header>
-// <Card.Body>
-//     <div className="cardBody p-2">
-//         <strong>Number of Servings: </strong>  {recipe.numberServed}
-//         <br /><br />
-//         <strong>Category: </strong> {recipe.category}
-//         <br /><br />
-//         <strong>Ingredients: </strong> <span>&nbsp; &nbsp;</span>
-//         {
-//             ingredients ({ ingredients, recipeId: recipe._id, deleteIngredient})
-
-//         }
-//         <br /><br />
-//         </div>
-//     </Card.Body>
-//     <br />
-//     <Card.Footer className="text-muted p-2"> 
-//         <div>
-//             <NewIngredientForm addNewIngredient={addNewIngredient} />  
-//             <br /> <br />
-//         </div>
-      
-//        End of <strong>{recipe.name}</strong>
-//     </Card.Footer>
-// </Card> 
-
-
-
-
-
-
-
-// <div>
-// <h1>{recipe.name}</h1>
-// <h2>Number of Servings: {recipe.numberServed}</h2>
-// <h2>Category: {recipe.category}</h2>
-// {
-//     ingredients ({ ingredients, recipeId: recipe._id, deleteIngredient})
-// }
-// <NewIngredientForm addNewIngredient={addNewIngredient} />
-// </div>
